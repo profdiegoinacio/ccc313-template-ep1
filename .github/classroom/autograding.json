@@ -1,0 +1,244 @@
+{
+  "tests": [
+    {
+      "name": "Ex01 - Ano bissexto (2024)",
+      "setup": "",
+      "run": "python ex01_ano_bissexto.py",
+      "input": "2024",
+      "output": "Bissexto",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex01 - Ano nao bissexto (1900)",
+      "setup": "",
+      "run": "python ex01_ano_bissexto.py",
+      "input": "1900",
+      "output": "Nao bissexto",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex02 - IMC Peso normal (70 / 1.75)",
+      "setup": "",
+      "run": "python ex02_imc.py",
+      "input": "70\n1.75",
+      "output": "Peso normal",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex02 - IMC Obesidade (100 / 1.70)",
+      "setup": "",
+      "run": "python ex02_imc.py",
+      "input": "100\n1.70",
+      "output": "Obesidade",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex03 - Conceito B (nota 8.3)",
+      "setup": "",
+      "run": "python ex03_conceitos.py",
+      "input": "8.3",
+      "output": "B",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex03 - Conceito F (nota 5.9)",
+      "setup": "",
+      "run": "python ex03_conceitos.py",
+      "input": "5.9",
+      "output": "F",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex04 - Dia util (entrada 3)",
+      "setup": "",
+      "run": "python ex04_dia_semana.py",
+      "input": "3",
+      "output": "Dia util",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex04 - Fim de semana (entrada 7)",
+      "setup": "",
+      "run": "python ex04_dia_semana.py",
+      "input": "7",
+      "output": "Fim de semana",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex05 - Tabuada do 7 (ultima linha)",
+      "setup": "",
+      "run": "python ex05_tabuada.py",
+      "input": "7",
+      "output": "7 x 10 = 70",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex05 - Tabuada do 3 (linha intermediaria)",
+      "setup": "",
+      "run": "python ex05_tabuada.py",
+      "input": "3",
+      "output": "3 x 5 = 15",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex06 - Fatorial de 5",
+      "setup": "",
+      "run": "python ex06_fatorial.py",
+      "input": "5",
+      "output": "120",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex06 - Fatorial de 0",
+      "setup": "",
+      "run": "python ex06_fatorial.py",
+      "input": "0",
+      "output": "0! = 1",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex07 - Notas turma Aprovado (media 8.00)",
+      "setup": "",
+      "run": "python ex07_notas_turma.py",
+      "input": "3\n7.0\n8.0\n9.0",
+      "output": "Aprovado",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex07 - Notas turma Reprovado (media 4.50)",
+      "setup": "",
+      "run": "python ex07_notas_turma.py",
+      "input": "2\n4.0\n5.0",
+      "output": "Reprovado",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex08 - Geometria raio 5 (area 78.54)",
+      "setup": "",
+      "run": "python ex08_geometria.py",
+      "input": "5",
+      "output": "78.54",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex08 - Geometria raio 3 (area 28.27)",
+      "setup": "",
+      "run": "python ex08_geometria.py",
+      "input": "3",
+      "output": "28.27",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex09 - Senha Muito Fraca (abc)",
+      "setup": "",
+      "run": "python ex09_senha.py",
+      "input": "abc",
+      "output": "Muito Fraca",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex09 - Senha Muito Forte (Python@99!)",
+      "setup": "",
+      "run": "python ex09_senha.py",
+      "input": "Python@99!",
+      "output": "Muito Forte",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Ex10 - Primos ate 20 (total 8)",
+      "setup": "",
+      "run": "python ex10_primos.py",
+      "input": "20",
+      "output": "Total: 8 primos",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex10 - Primos ate 10 (total 4)",
+      "setup": "",
+      "run": "python ex10_primos.py",
+      "input": "10",
+      "output": "Total: 4 primos",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Ex11 - Cifra de Cesar PYTHON deslocamento 3",
+      "setup": "",
+      "run": "python ex11_cifra_cesar.py",
+      "input": "PYTHON\n3",
+      "output": "SBWKRQ",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex11 - Cifra de Cesar ALGORITMO deslocamento 1",
+      "setup": "",
+      "run": "python ex11_cifra_cesar.py",
+      "input": "ALGORITMO\n1",
+      "output": "BMHPSJUNP",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "Ex12 - Oraculo Binario acerto imediato (64)",
+      "setup": "",
+      "run": "python ex12_oraculo_binario.py",
+      "input": "64",
+      "output": "1 tentativa",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 4
+    },
+    {
+      "name": "Ex12 - Oraculo Binario 5 tentativas (100)",
+      "setup": "",
+      "run": "python ex12_oraculo_binario.py",
+      "input": "100",
+      "output": "5 tentativa",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
