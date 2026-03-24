@@ -1,4 +1,4 @@
-# Trabalho Prático 01 — Decisão, Funções e Repetição
+# Tarefas Práticas Parte 01 — Decisão, Funções e Repetição
 
 **Disciplina:** Algoritmos e Programação  
 **Conteúdo:** Aulas 04 a 07 (estruturas de decisão, funções, bibliotecas padrão e estruturas de repetição)  
