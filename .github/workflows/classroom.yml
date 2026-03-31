@@ -279,7 +279,7 @@ jobs:
           setup-command: ''
           command: python .private-tests/test_ex10.py
           timeout: 30
-          max-score: 4
+          max-score: 7
 
       # ── EX 11 ────────────────────────────────────────────────────────────────
 

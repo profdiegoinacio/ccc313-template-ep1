@@ -198,7 +198,7 @@
       "output": "Todos os casos passaram.",
       "comparison": "included",
       "timeout": 30,
-      "points": 4
+      "points": 7
     },
     {
       "name": "Ex11 - Cifra PYTHON deslocamento 3 (exemplo)",
