@@ -15,41 +15,48 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ── TESTES PRIVADOS ───────────────────────────────────────────────────────
+      # Clona o repositório privado com os scripts de teste ocultos.
+      # TESTS_TOKEN: PAT (fine-grained, read-only) armazenado como secret da org.
+
+      - name: Clonar repositorio privado de testes
+        run: |
+          git clone \
+            https://x-access-token:${{ secrets.TESTS_TOKEN_CCC313_EP1 }}@github.com/profdiegoinacio/ccc313-ep1-tests.git \
+            .private-tests
+
       # ── EX 01 ────────────────────────────────────────────────────────────────
 
-      - name: Ex01 - Ano bissexto (2024)
-        id: ex01-bissexto
+      - name: Ex01 - Ano bissexto (exemplo)
+        id: ex01-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex01 - Ano bissexto (2024)
+          test-name: Ex01 - Ano bissexto (exemplo)
           setup-command: ''
           command: python ex01_ano_bissexto.py
           input: '2024'
           expected-output: 'Bissexto'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex01 - Ano nao bissexto (1900)
-        id: ex01-nao-bissexto
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex01 - Testes ocultos
+        id: ex01-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex01 - Ano nao bissexto (1900)
+          test-name: Ex01 - Testes ocultos
           setup-command: ''
-          command: python ex01_ano_bissexto.py
-          input: '1900'
-          expected-output: 'Nao bissexto'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex01.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 02 ────────────────────────────────────────────────────────────────
 
-      - name: Ex02 - IMC Peso normal
-        id: ex02-normal
+      - name: Ex02 - IMC Peso normal (exemplo)
+        id: ex02-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex02 - IMC Peso normal
+          test-name: Ex02 - IMC Peso normal (exemplo)
           setup-command: ''
           command: python ex02_imc.py
           input: |
@@ -58,142 +65,125 @@ jobs:
           expected-output: 'Peso normal'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex02 - IMC Obesidade
-        id: ex02-obesidade
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex02 - Testes ocultos
+        id: ex02-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex02 - IMC Obesidade
+          test-name: Ex02 - Testes ocultos
           setup-command: ''
-          command: python ex02_imc.py
-          input: |
-            100
-            1.70
-          expected-output: 'Obesidade'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex02.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 03 ────────────────────────────────────────────────────────────────
 
-      - name: Ex03 - Conceito B
-        id: ex03-b
+      - name: Ex03 - Conceito B (exemplo)
+        id: ex03-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex03 - Conceito B
+          test-name: Ex03 - Conceito B (exemplo)
           setup-command: ''
           command: python ex03_conceitos.py
           input: '8.3'
           expected-output: 'B'
           comparison-method: exact
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex03 - Conceito F
-        id: ex03-f
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex03 - Testes ocultos
+        id: ex03-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex03 - Conceito F
+          test-name: Ex03 - Testes ocultos
           setup-command: ''
-          command: python ex03_conceitos.py
-          input: '5.9'
-          expected-output: 'F'
-          comparison-method: exact
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex03.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 04 ────────────────────────────────────────────────────────────────
 
-      - name: Ex04 - Dia util
-        id: ex04-util
+      - name: Ex04 - Dia util (exemplo)
+        id: ex04-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex04 - Dia util
+          test-name: Ex04 - Dia util (exemplo)
           setup-command: ''
           command: python ex04_dia_semana.py
           input: '3'
           expected-output: 'Dia util'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex04 - Fim de semana
-        id: ex04-fds
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex04 - Testes ocultos
+        id: ex04-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex04 - Fim de semana
+          test-name: Ex04 - Testes ocultos
           setup-command: ''
-          command: python ex04_dia_semana.py
-          input: '7'
-          expected-output: 'Fim de semana'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex04.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 05 ────────────────────────────────────────────────────────────────
 
-      - name: Ex05 - Tabuada do 7
-        id: ex05-7
+      - name: Ex05 - Tabuada do 7 (exemplo)
+        id: ex05-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex05 - Tabuada do 7
+          test-name: Ex05 - Tabuada do 7 (exemplo)
           setup-command: ''
           command: python ex05_tabuada.py
           input: '7'
           expected-output: '7 x 10 = 70'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex05 - Tabuada do 3
-        id: ex05-3
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex05 - Testes ocultos
+        id: ex05-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex05 - Tabuada do 3
+          test-name: Ex05 - Testes ocultos
           setup-command: ''
-          command: python ex05_tabuada.py
-          input: '3'
-          expected-output: '3 x 5 = 15'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex05.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 06 ────────────────────────────────────────────────────────────────
 
-      - name: Ex06 - Fatorial de 5
-        id: ex06-5
+      - name: Ex06 - Fatorial de 5 (exemplo)
+        id: ex06-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex06 - Fatorial de 5
+          test-name: Ex06 - Fatorial de 5 (exemplo)
           setup-command: ''
           command: python ex06_fatorial.py
           input: '5'
           expected-output: '120'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex06 - Fatorial de 0
-        id: ex06-0
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex06 - Testes ocultos
+        id: ex06-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex06 - Fatorial de 0
+          test-name: Ex06 - Testes ocultos
           setup-command: ''
-          command: python ex06_fatorial.py
-          input: '0'
-          expected-output: '0! = 1'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex06.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 07 ────────────────────────────────────────────────────────────────
 
-      - name: Ex07 - Notas Aprovado
-        id: ex07-aprovado
+      - name: Ex07 - Notas Aprovado (exemplo)
+        id: ex07-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex07 - Notas Aprovado
+          test-name: Ex07 - Notas Aprovado (exemplo)
           setup-command: ''
           command: python ex07_notas_turma.py
           input: |
@@ -204,115 +194,100 @@ jobs:
           expected-output: 'Aprovado'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex07 - Notas Reprovado
-        id: ex07-reprovado
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex07 - Testes ocultos
+        id: ex07-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex07 - Notas Reprovado
+          test-name: Ex07 - Testes ocultos
           setup-command: ''
-          command: python ex07_notas_turma.py
-          input: |
-            2
-            4.0
-            5.0
-          expected-output: 'Reprovado'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex07.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 08 ────────────────────────────────────────────────────────────────
 
-      - name: Ex08 - Geometria raio 5
-        id: ex08-5
+      - name: Ex08 - Geometria raio 5 (exemplo)
+        id: ex08-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex08 - Geometria raio 5
+          test-name: Ex08 - Geometria raio 5 (exemplo)
           setup-command: ''
           command: python ex08_geometria.py
           input: '5'
           expected-output: '78.54'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex08 - Geometria raio 3
-        id: ex08-3
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex08 - Testes ocultos
+        id: ex08-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex08 - Geometria raio 3
+          test-name: Ex08 - Testes ocultos
           setup-command: ''
-          command: python ex08_geometria.py
-          input: '3'
-          expected-output: '28.27'
-          comparison-method: included
-          timeout: 10
-          max-score: 4
+          command: python .private-tests/test_ex08.py
+          timeout: 30
+          max-score: 6
 
       # ── EX 09 ────────────────────────────────────────────────────────────────
 
-      - name: Ex09 - Senha Muito Fraca
-        id: ex09-fraca
+      - name: Ex09 - Senha Muito Fraca (exemplo)
+        id: ex09-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex09 - Senha Muito Fraca
+          test-name: Ex09 - Senha Muito Fraca (exemplo)
           setup-command: ''
           command: python ex09_senha.py
           input: 'abc'
           expected-output: 'Muito Fraca'
           comparison-method: exact
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex09 - Senha Muito Forte
-        id: ex09-forte
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex09 - Testes ocultos
+        id: ex09-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex09 - Senha Muito Forte
+          test-name: Ex09 - Testes ocultos
           setup-command: ''
-          command: python ex09_senha.py
-          input: 'Python@99!'
-          expected-output: 'Muito Forte'
-          comparison-method: exact
-          timeout: 10
-          max-score: 5
+          command: python .private-tests/test_ex09.py
+          timeout: 30
+          max-score: 7
 
       # ── EX 10 ────────────────────────────────────────────────────────────────
 
-      - name: Ex10 - Primos ate 20
-        id: ex10-20
+      - name: Ex10 - Primos ate 20 (exemplo)
+        id: ex10-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex10 - Primos ate 20
+          test-name: Ex10 - Primos ate 20 (exemplo)
           setup-command: ''
           command: python ex10_primos.py
           input: '20'
           expected-output: 'Total: 8 primos'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex10 - Primos ate 10
-        id: ex10-10
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex10 - Testes ocultos
+        id: ex10-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex10 - Primos ate 10
+          test-name: Ex10 - Testes ocultos
           setup-command: ''
-          command: python ex10_primos.py
-          input: '10'
-          expected-output: 'Total: 4 primos'
-          comparison-method: included
-          timeout: 10
-          max-score: 5
+          command: python .private-tests/test_ex10.py
+          timeout: 30
+          max-score: 4
 
       # ── EX 11 ────────────────────────────────────────────────────────────────
 
-      - name: Ex11 - Cifra PYTHON deslocamento 3
-        id: ex11-python
+      - name: Ex11 - Cifra PYTHON deslocamento 3 (exemplo)
+        id: ex11-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex11 - Cifra PYTHON deslocamento 3
+          test-name: Ex11 - Cifra PYTHON deslocamento 3 (exemplo)
           setup-command: ''
           command: python ex11_cifra_cesar.py
           input: |
@@ -321,91 +296,83 @@ jobs:
           expected-output: 'SBWKRQ'
           comparison-method: exact
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex11 - Cifra ALGORITMO deslocamento 1
-        id: ex11-algoritmo
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex11 - Testes ocultos
+        id: ex11-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex11 - Cifra ALGORITMO deslocamento 1
+          test-name: Ex11 - Testes ocultos
           setup-command: ''
-          command: python ex11_cifra_cesar.py
-          input: |
-            ALGORITMO
-            1
-          expected-output: 'BMHPSJUNP'
-          comparison-method: exact
-          timeout: 10
-          max-score: 5
+          command: python .private-tests/test_ex11.py
+          timeout: 30
+          max-score: 7
 
       # ── EX 12 ────────────────────────────────────────────────────────────────
 
-      - name: Ex12 - Oraculo Binario acerto imediato (64)
-        id: ex12-64
+      - name: Ex12 - Oraculo Binario acerto imediato (exemplo)
+        id: ex12-pub
         uses: classroom-resources/autograding-io-grader@v1
         with:
-          test-name: Ex12 - Oraculo Binario acerto imediato (64)
+          test-name: Ex12 - Oraculo Binario acerto imediato (exemplo)
           setup-command: ''
           command: python ex12_oraculo_binario.py
           input: '64'
           expected-output: '1 tentativa'
           comparison-method: included
           timeout: 10
-          max-score: 4
+          max-score: 2
 
-      - name: Ex12 - Oraculo Binario 5 tentativas (100)
-        id: ex12-100
-        uses: classroom-resources/autograding-io-grader@v1
+      - name: Ex12 - Testes ocultos
+        id: ex12-hidden
+        uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Ex12 - Oraculo Binario 5 tentativas (100)
+          test-name: Ex12 - Testes ocultos
           setup-command: ''
-          command: python ex12_oraculo_binario.py
-          input: '100'
-          expected-output: '5 tentativa'
-          comparison-method: included
-          timeout: 10
-          max-score: 5
+          command: python .private-tests/test_ex12.py
+          timeout: 30
+          max-score: 7
 
-      # ── REPORTER (obrigatório para o painel do Classroom) ────────────────────
+      # ── REPORTER ─────────────────────────────────────────────────────────────
 
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
-          EX01-BISSEXTO_RESULTS: "${{ steps.ex01-bissexto.outputs.result }}"
-          EX01-NAO-BISSEXTO_RESULTS: "${{ steps.ex01-nao-bissexto.outputs.result }}"
-          EX02-NORMAL_RESULTS: "${{ steps.ex02-normal.outputs.result }}"
-          EX02-OBESIDADE_RESULTS: "${{ steps.ex02-obesidade.outputs.result }}"
-          EX03-B_RESULTS: "${{ steps.ex03-b.outputs.result }}"
-          EX03-F_RESULTS: "${{ steps.ex03-f.outputs.result }}"
-          EX04-UTIL_RESULTS: "${{ steps.ex04-util.outputs.result }}"
-          EX04-FDS_RESULTS: "${{ steps.ex04-fds.outputs.result }}"
-          EX05-7_RESULTS: "${{ steps.ex05-7.outputs.result }}"
-          EX05-3_RESULTS: "${{ steps.ex05-3.outputs.result }}"
-          EX06-5_RESULTS: "${{ steps.ex06-5.outputs.result }}"
-          EX06-0_RESULTS: "${{ steps.ex06-0.outputs.result }}"
-          EX07-APROVADO_RESULTS: "${{ steps.ex07-aprovado.outputs.result }}"
-          EX07-REPROVADO_RESULTS: "${{ steps.ex07-reprovado.outputs.result }}"
-          EX08-5_RESULTS: "${{ steps.ex08-5.outputs.result }}"
-          EX08-3_RESULTS: "${{ steps.ex08-3.outputs.result }}"
-          EX09-FRACA_RESULTS: "${{ steps.ex09-fraca.outputs.result }}"
-          EX09-FORTE_RESULTS: "${{ steps.ex09-forte.outputs.result }}"
-          EX10-20_RESULTS: "${{ steps.ex10-20.outputs.result }}"
-          EX10-10_RESULTS: "${{ steps.ex10-10.outputs.result }}"
-          EX11-PYTHON_RESULTS: "${{ steps.ex11-python.outputs.result }}"
-          EX11-ALGORITMO_RESULTS: "${{ steps.ex11-algoritmo.outputs.result }}"
-          EX12-64_RESULTS: "${{ steps.ex12-64.outputs.result }}"
-          EX12-100_RESULTS: "${{ steps.ex12-100.outputs.result }}"
+          EX01-PUB_RESULTS:    "${{ steps.ex01-pub.outputs.result }}"
+          EX01-HIDDEN_RESULTS: "${{ steps.ex01-hidden.outputs.result }}"
+          EX02-PUB_RESULTS:    "${{ steps.ex02-pub.outputs.result }}"
+          EX02-HIDDEN_RESULTS: "${{ steps.ex02-hidden.outputs.result }}"
+          EX03-PUB_RESULTS:    "${{ steps.ex03-pub.outputs.result }}"
+          EX03-HIDDEN_RESULTS: "${{ steps.ex03-hidden.outputs.result }}"
+          EX04-PUB_RESULTS:    "${{ steps.ex04-pub.outputs.result }}"
+          EX04-HIDDEN_RESULTS: "${{ steps.ex04-hidden.outputs.result }}"
+          EX05-PUB_RESULTS:    "${{ steps.ex05-pub.outputs.result }}"
+          EX05-HIDDEN_RESULTS: "${{ steps.ex05-hidden.outputs.result }}"
+          EX06-PUB_RESULTS:    "${{ steps.ex06-pub.outputs.result }}"
+          EX06-HIDDEN_RESULTS: "${{ steps.ex06-hidden.outputs.result }}"
+          EX07-PUB_RESULTS:    "${{ steps.ex07-pub.outputs.result }}"
+          EX07-HIDDEN_RESULTS: "${{ steps.ex07-hidden.outputs.result }}"
+          EX08-PUB_RESULTS:    "${{ steps.ex08-pub.outputs.result }}"
+          EX08-HIDDEN_RESULTS: "${{ steps.ex08-hidden.outputs.result }}"
+          EX09-PUB_RESULTS:    "${{ steps.ex09-pub.outputs.result }}"
+          EX09-HIDDEN_RESULTS: "${{ steps.ex09-hidden.outputs.result }}"
+          EX10-PUB_RESULTS:    "${{ steps.ex10-pub.outputs.result }}"
+          EX10-HIDDEN_RESULTS: "${{ steps.ex10-hidden.outputs.result }}"
+          EX11-PUB_RESULTS:    "${{ steps.ex11-pub.outputs.result }}"
+          EX11-HIDDEN_RESULTS: "${{ steps.ex11-hidden.outputs.result }}"
+          EX12-PUB_RESULTS:    "${{ steps.ex12-pub.outputs.result }}"
+          EX12-HIDDEN_RESULTS: "${{ steps.ex12-hidden.outputs.result }}"
         with:
           runners: >-
-            ex01-bissexto,ex01-nao-bissexto,
-            ex02-normal,ex02-obesidade,
-            ex03-b,ex03-f,
-            ex04-util,ex04-fds,
-            ex05-7,ex05-3,
-            ex06-5,ex06-0,
-            ex07-aprovado,ex07-reprovado,
-            ex08-5,ex08-3,
-            ex09-fraca,ex09-forte,
-            ex10-20,ex10-10,
-            ex11-python,ex11-algoritmo,
-            ex12-64,ex12-100
+            ex01-pub,ex01-hidden,
+            ex02-pub,ex02-hidden,
+            ex03-pub,ex03-hidden,
+            ex04-pub,ex04-hidden,
+            ex05-pub,ex05-hidden,
+            ex06-pub,ex06-hidden,
+            ex07-pub,ex07-hidden,
+            ex08-pub,ex08-hidden,
+            ex09-pub,ex09-hidden,
+            ex10-pub,ex10-hidden,
+            ex11-pub,ex11-hidden,
+            ex12-pub,ex12-hidden
