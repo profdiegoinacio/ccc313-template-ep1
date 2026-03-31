@@ -11,6 +11,8 @@ jobs:
   autograding:
     name: Autograding
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - uses: actions/checkout@v4
@@ -36,7 +38,7 @@ jobs:
           command: python ex01_ano_bissexto.py
           input: '2024'
           expected-output: 'Bissexto'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -63,7 +65,7 @@ jobs:
             70
             1.75
           expected-output: 'Peso normal'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -113,7 +115,7 @@ jobs:
           command: python ex04_dia_semana.py
           input: '3'
           expected-output: 'Dia util'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -138,7 +140,7 @@ jobs:
           command: python ex05_tabuada.py
           input: '7'
           expected-output: '7 x 10 = 70'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -163,7 +165,7 @@ jobs:
           command: python ex06_fatorial.py
           input: '5'
           expected-output: '120'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -192,7 +194,7 @@ jobs:
             8.0
             9.0
           expected-output: 'Aprovado'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -217,7 +219,7 @@ jobs:
           command: python ex08_geometria.py
           input: '5'
           expected-output: '78.54'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -267,7 +269,7 @@ jobs:
           command: python ex10_primos.py
           input: '20'
           expected-output: 'Total: 8 primos'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
@@ -319,7 +321,7 @@ jobs:
           command: python ex12_oraculo_binario.py
           input: '64'
           expected-output: '1 tentativa'
-          comparison-method: included
+          comparison-method: contains
           timeout: 10
           max-score: 2
 
